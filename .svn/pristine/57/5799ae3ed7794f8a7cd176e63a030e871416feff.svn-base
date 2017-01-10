@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎页</title>
+
+</head>
+<body>
+    <div ng-app="welcome" ng-controller="welcomeCtrl">
+        <input type="text" ng-model="firstName"><br>
+        <input type="text" ng-model="lastName"><br>
+        姓名: {{ firstName + " " + lastName }}
+    </div>
+
+    <script src="../../vendor/angular/angular.min.js"></script>
+    <!--加载controller-->
+    <script src="welcomeCtrl.js"></script>
+    <!--加载services-->
+    <script src="../../services/userServ.js"></script>
+</body>
+</html>

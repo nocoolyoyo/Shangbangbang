@@ -1,0 +1,9 @@
+
+var app = angular.module('welcome',[]);
+//controller
+app.controller('welcomeCtrl',function($scope,userServ) {
+    // $scope代表作用域
+    console.log(userServ.init());
+    $scope.firstName = "数据绑定1";
+    $scope.lastName = "数据请问请问定1";
+});

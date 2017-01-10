@@ -1,0 +1,32 @@
+//列表模块定义
+var commentsList = angular.module("commentsList", ['praise','comments']);
+//指令
+
+commentsList.directive("commentsList",function($location){
+    //console.log($location.url())
+    return{
+        restrict:'EA',
+        template: '<ul ng-repeat="list in lists">' +
+                '<li>{{list.content}}<button ng-click="actionCommentPraise(list.id,list.isPraise,list.type)">' +
+                '{{list.isPraise}}</button><span>{{list.praiseNum}}</span></li>' +
+                '</ul>',
+
+        //templateUrl: 'bottomTool.html',用url加载html时最好用根目录路径绝对加载
+        controller: 'commentsListCtrl'
+    }
+});
+//控制器
+commentsList.controller("commentsListCtrl",function($scope,praiseServ,commentsServ){
+    var id = 0;//需要请求的评论列表id
+    //加载数据,省了手动渲染列表
+    commentsServ.getLists(id).then(function(data){
+        $scope.lists = data.list;
+    });
+   // console.log(praiseFltr);
+    //点赞控制
+    $scope.actionCommentPraise = function (id,action,type){
+        praiseServ.action(id,action,type);
+
+    }
+});
+

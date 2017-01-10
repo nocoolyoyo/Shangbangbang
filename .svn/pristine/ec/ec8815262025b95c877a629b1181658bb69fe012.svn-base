@@ -1,0 +1,21 @@
+//底部工具栏模块定义
+var commentsList = angular.module("commentsList", ['praise','comments']);
+//指令
+commentsList.directive("commentsList",function($location){
+    //console.log($location.url())
+    return{
+        restrict:'EA',
+        template: '<ul>' +
+                '<li>{{content}}<button ng-click="actionPraise()">{{actionPraise}}</button><span>{{praiseNum}}</span></li>' +
+                '</ul>',
+
+
+        //templateUrl: 'bottomTool.html',用url加载html时最好用根目录路径绝对加载
+        controller: 'bottomToolCtrl'
+    }
+});
+//控制器
+commentsList.controller("commentsListCtrl",function($scope,praiseServ,commentsServ){
+
+
+});

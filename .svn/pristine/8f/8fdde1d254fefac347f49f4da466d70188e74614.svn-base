@@ -1,0 +1,8 @@
+{
+  "list": [
+    {"id":0, "type": 0, "author": "甲","isPraise": true, "content": "几年十大十大啊实打实打算","praiseNum": "5115"},
+    {"id":1, "type": 1, "author": "乙","isPraise": true, "content": "几年十大十大阿斯顿撒大苏打打算","praiseNum": "5115"},
+    {"id":2, "type": 2, "author": "丙","isPraise": true, "content": "几年十大十大阿斯顿撒大苏打打算","praiseNum": "5115"},
+    {"id":3, "type": 3, "author": "丁","isPraise": true, "content": "几年十大十大阿斯顿撒大苏打打算","praiseNum": "5115"}
+  ]
+}

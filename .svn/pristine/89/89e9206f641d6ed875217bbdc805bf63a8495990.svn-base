@@ -1,0 +1,67 @@
+//底部工具栏模块定义
+var bottomTool = angular.module("bottomTool", ['praise']);
+//指令
+bottomTool.directive("bottomTool",function($location){
+    //console.log($location.url())
+    return{
+        restrict:'EA',
+        template: '<div>' +
+                '<textarea></textarea>' +
+                '<button ng-click="actionAudio()">语音</button>' +
+                '<button ng-click="actionFavorite()">收藏</button>' +
+                '<button ng-click="actionPraise()">{{praiseButton}}</button><span>{{praiseNum}}</span>' +
+                '<button ng-click="actionShare()">分享</button>' +
+                '<button ng-click="actionComment()">发送评论</button>' +
+                '</div>',
+        //templateUrl: 'bottomTool.html',用url加载html时最好用根目录路径绝对加载
+        controller: 'bottomToolCtrl'
+    }
+});
+//控制器
+bottomTool.controller("bottomToolCtrl",function($scope,praiseServ){
+    $scope.actionAudio = function () {
+        console.log(1111)
+    };
+    $scope.actionFavorite = function () {
+
+    };
+    //点赞控制
+    $scope.actionPraise = function () {
+        var id = 0;
+        //点赞和取消判断标志
+        /*var action = $scope.praiseButton === "点赞" ?
+            function(){
+                $scope.praiseButton = "取消点赞";
+                return 0;
+            }:function(){
+                $scope.praiseButton = "点赞";
+                return 1;
+        };*/
+        var action = 0;
+        if($scope.praiseButton === "点赞"){
+            $scope.praiseButton = "取消点赞";
+            action = 0;
+        }else{
+            $scope.praiseButton = "点赞";
+            action = 1;
+        }
+        praiseServ.action(id, action).then(function(res) {
+            if(res === 'error'){
+                if($scope.praiseButton === "点赞"){
+                    $scope.praiseButton = "取消点赞";
+                }else{
+                    $scope.praiseButton = "点赞";
+                }
+            }
+        });
+
+    };
+    $scope.actionShare = function () {
+        console.log(1111)
+    };
+    $scope.actionComment = function () {
+        console.log(1111)
+    };
+    $scope.praiseButton = '点赞',
+    $scope.praiseNum = 5566;
+});

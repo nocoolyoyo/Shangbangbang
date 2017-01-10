@@ -1,0 +1,21 @@
+app.service('userServ', function ($http, $q) {
+    var user = {'hahaha':'erere'};
+    var url = "test.json";
+    return {
+        init: function(data) {
+            return user;
+        },
+        getAll: function() {
+            var deferred = $q.defer();
+            $http({
+                method: 'GET',
+                url: url
+            }).success(function (data) {
+                deferred.resolve(data);
+            }).error(function () {
+                deferred.reject('请检查网络');
+            })
+            return deferred.promise;
+        }
+    };
+})
